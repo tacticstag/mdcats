@@ -3,44 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat Gallery</title>
+    <title>Image Gallery</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
             display: flex;
             flex-wrap: wrap;
-            overflow: hidden;
+            justify-content: space-around;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
         }
         img {
-            flex: 1 1 100%;
-            max-width: none; /* Prevent images from being scaled */
+            max-width: 100%;
             height: auto;
-        }
-        @media (min-width: 768px) {
-            img {
-                flex: 1 1 50%; /* Display two images side by side on larger screens */
-            }
-        }
-        @media (min-width: 1024px) {
-            img {
-                flex: 1 1 33.33%; /* Display three images side by side on larger screens */
-            }
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
-    <?php
-    // Specify the path to your images
-    $dir = 'pics/';
-    
-    // Scan the directory for image files
-    $images = glob($dir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
-    
-    // Output image tags for each image found
-    foreach($images as $image) {
-        echo '<img src="' . $image . '" alt="A cute cat">';
-    }
-    ?>
+
+<div id="gallery"></div>
+
+<script>
+    // List of image filenames in the 'pics' folder
+    const imageFilenames = [
+        'IMG_1182.jpeg',
+        'IMG_1183 2.jpeg',
+        'IMG_1185.jpeg',
+        'IMG_1186.gif',
+        'IMG_1187.gif',
+        'IMG_1188.gif',
+        'IMG_1189.gif',
+        'IMG_1190.gif',
+        'IMG_1191.gif',
+        'IMG_1193.gif',
+        'IMG_1194.webp',
+        'IMG_1195.gif',
+        'IMG_4915.gif',
+        'IMG_4922.jpeg',
+        'IMG_4923.jpeg',
+        'IMG_4924.jpeg',
+        'IMG_4925.jpeg',
+        'IMG_4926.jpeg',
+        'IMG_4927.jpeg',
+        'IMG_4928.jpeg',
+        'IMG_4929.jpeg',
+        'IMG_4930.jpeg',
+        'IMG_4931.jpeg',
+        'IMG_4932.png',
+        'IMG_4933.jpeg',
+        'IMG_4934.jpeg',
+        'IMG_4935.jpeg',
+        'IMG_4936.jpeg',
+        'IMG_4937.jpeg',
+        'IMG_4938.jpeg',
+        'IMG_4939.jpeg',
+        'IMG_4940.jpeg',
+        'IMG_4941.jpeg',
+        'IMG_4942.png',
+        'IMG_4943.jpeg',
+        'IMG_4944.jpeg',
+        'IMG_4945.jpeg',
+        'IMG_4946.jpeg',
+        'IMG_4947.jpeg'
+        // Add more filenames as necessary
+    ];
+
+    const gallery = document.getElementById('gallery');
+
+    // Create img elements and append them to the gallery div
+    imageFilenames.forEach(filename => {
+        const img = document.createElement('img');
+        img.src = `pics/${filename}`; // Set the src to the path of the image
+        img.alt = filename; // Optional: set alt text
+        gallery.appendChild(img); // Add the image to the gallery
+    });
+</script>
+
 </body>
 </html>
