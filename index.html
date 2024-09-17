@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+        img {
+            flex: 1 1 100%;
+            max-width: none; /* Prevent images from being scaled */
+            height: auto;
+        }
+        @media (min-width: 768px) {
+            img {
+                flex: 1 1 50%; /* Display two images side by side on larger screens */
+            }
+        }
+        @media (min-width: 1024px) {
+            img {
+                flex: 1 1 33.33%; /* Display three images side by side on larger screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <?php
+    // Specify the path to your images
+    $dir = 'pics/';
+    
+    // Scan the directory for image files
+    $images = glob($dir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+    
+    // Output image tags for each image found
+    foreach($images as $image) {
+        echo '<img src="' . $image . '" alt="A cute cat">';
+    }
+    ?>
+</body>
+</html>
